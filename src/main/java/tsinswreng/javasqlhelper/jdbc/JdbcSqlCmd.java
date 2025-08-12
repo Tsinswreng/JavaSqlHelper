@@ -8,7 +8,7 @@ import lombok.Data;
 
 
 @Data
-public class JdbcSqlCmd implements ISqlCmd, AutoCloseable {
+public class JdbcSqlCmd implements ISqlCmd {
 	private PreparedStatement rawCmd;
 	private String sql;
 

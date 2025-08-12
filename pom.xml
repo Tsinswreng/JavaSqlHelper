@@ -34,7 +34,13 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- 可以根據需要添加更多依賴 -->
+		<!-- spring jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>5.3.23</version> <!-- 根据需求选择版本 -->
+		</dependency>
+
 	</dependencies>
 
 	<build>
