@@ -1,7 +1,8 @@
 package tsinswreng.javasqlhelper;
 
 public interface ISqlCmdMkr {
-    ISqlCmd prepare(ISqlCmd cmd, Object ct);
-    ISqlCmd prepare(Object dbFnCtx, String sql, Object ct);
-    ISqlCmd mkCmd(Object dbFnCtx, String sql, Object ct);
+	ISqlCmd prepare(ISqlCmd cmd);
+	ISqlCmd prepare(IDbFnCtx dbFnCtx, String sql);
+	ISqlCmd mkCmd(IDbFnCtx dbFnCtx, String sql);
+	//private Map<IParam, Integer> param_pos = new LinkedHashMap<>();
 }

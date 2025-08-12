@@ -1,11 +1,11 @@
 package tsinswreng.javasqlhelper;
 
-import tsinswreng.javasqlhelper.fn.*;
+import java.util.function.Function;
 
 public interface IUpperTypeMapFn {
-	FnUpperToRaw getUpperToRaw();
-	void setUpperToRaw(FnUpperToRaw upperToRaw);
+	Function<Object, Object> getUpperToRaw();
+	void setUpperToRaw(Function<Object, Object> upperToRaw);
 
-	FnRawToUpper getRawToUpper();
-	void setRawToUpper(FnRawToUpper upperToRaw);
+	Function<Object, Object> getRawToUpper();
+	void setRawToUpper(Function<Object, Object> upperToRaw);
 }

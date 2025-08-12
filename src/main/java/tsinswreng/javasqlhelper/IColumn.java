@@ -22,7 +22,7 @@ public interface IColumn {
 	IUpperTypeMapFn getUpperTypeMapper();
 	void setUpperTypeMapper(IUpperTypeMapFn upperTypeMapFn);
 
-	boolean notNull();
-	void notNull(boolean v);
+	boolean isNotNull();
+	void setNotNull(boolean v);
 
 }

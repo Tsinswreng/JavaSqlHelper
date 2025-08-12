@@ -26,7 +26,7 @@ public class ColBuilder {
 	}
 
 	public ColBuilder notNull(){
-		this.column.notNull(true);
+		this.column.setNotNull(true);
 		return this;
 	}
 

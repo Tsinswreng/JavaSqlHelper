@@ -40,4 +40,70 @@ public class Table implements ITable{
 		}
 		return this;
 	}
+
+	private static String _oneCol(ITable tbl, IColumn col){
+		var z = tbl;
+		var R = new ArrayList<String>();
+		R.add(tbl.qt(col.getDbName()));
+		if(col.getDbType() != null && !col.getDbType().equals("")){
+			R.add(col.getDbType());
+		}else{
+			if(col.getRawCodeType() == null){
+				throw new RuntimeException("No db type for col: "+col.getDbName());
+			}
+			try {
+				var dbTypeName = z.getSqlMkr().getSqlTypeMapper().ToDbTypeName(col.getRawCodeType());
+				R.add(dbTypeName);
+			} catch (Exception e) {
+				throw new RuntimeException("Type Mapping Error for Column: "+col.getDbName(), e);
+			}
+		}
+		if(col.getAdditionalSqls() != null){
+			R.addAll(col.getAdditionalSqls());
+		}
+		if(col.isNotNull()){
+			R.add("NOT NULL");
+		}
+		return String.join(" ", R);
+	}
+
+	private static String _fmtInnerSqls(ITable z, List<String> sqls){
+		if(sqls == null || sqls.size() == 0){
+			return "";
+		}
+		var sqlList = z.getInnerAdditionalSqls();
+		if(sqlList == null){
+			sqlList = new ArrayList<String>();
+		}
+		return ",\n\t"+String.join("\n\t", sqlList);
+	}
+	private static String _fmtOuterSqls(ITable z, List<String> sqls){
+		if(sqls == null || sqls.size() == 0){
+			return "";
+		}
+		var R = new ArrayList<String>();
+		for(var sql : sqls){
+			R.add(sql);
+			R.add(";\n");
+		}
+		return String.join("", R);
+	}
+
+	public String sqlMkTbl(ITable z){
+		var lines = new ArrayList<String>();
+		for(var name_col : z.getColumns().entrySet()){
+			//var name = name_col.getKey();
+			var col = name_col.getValue();
+			lines.add(_oneCol(z, col));
+		}
+		var S =
+"CREATE TABLE IF NOT EXISTS" + z.qt(z.getDbTblName()) + "("
++"	"+String.join(",\n\t", lines)+_fmtInnerSqls(z, z.getInnerAdditionalSqls())
++");"
++_fmtOuterSqls(z, z.getOuterAdditionalSqls());
+		return S;
+	}
+
+
+
 }

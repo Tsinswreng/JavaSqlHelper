@@ -11,6 +11,8 @@ public class SqlCmd implements AutoCloseable {
 	private PreparedStatement rawCmd;
 	private String sql;
 
+	
+
 	// 构造函数：接受PreparedStatement
 	public SqlCmd(PreparedStatement stmt) {
 		this.rawCmd = stmt;
@@ -35,7 +37,7 @@ public class SqlCmd implements AutoCloseable {
 		try {
 			rawCmd.clearParameters(); // 清空旧参数
 			for (Map.Entry<String, Object> entry : params.entrySet()) {
-				rawCmd.setObject("@" + entry.getKey(), codeValToDbVal(entry.getValue()));
+				//rawCmd.setObject("@" + entry.getKey(), codeValToDbVal(entry.getValue()));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException("参数绑定失败", e);
