@@ -17,7 +17,7 @@ public interface ITblMgr {
 		getEntityType_Tbl().put(tbl.getCodeEntityType(), tbl);
 	}
 
-	default ITable getTable(Class<?> poClass) {
+	default ITable getTbl(Class<?> poClass) {
 		return getEntityType_Tbl().get(poClass);
 	}
 }
