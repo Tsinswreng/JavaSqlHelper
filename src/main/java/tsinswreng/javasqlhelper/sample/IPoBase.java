@@ -1,5 +1,8 @@
 package tsinswreng.javasqlhelper.sample;
 
+/**
+ * 成員ʸ皆用引用類型
+ */
 public interface IPoBase {
 	public static String N_CREATED_AT = "createdAt";
 	public static String N_UPDATED_AT = "updatedAt";
