@@ -7,9 +7,11 @@ public interface ISqlCmd {
 	String getSql();
 	void setSql(String sql);
 
-	List<Map<String, Object>> run(Object ct);
+	Iterable<Map<String, Object>> run();
 
-	ISqlCmd args(Map<String, Object> args);
+	ISqlCmd rawArgs(Map<String, Object> args);
+
+	ISqlCmd resolvedArgs(Map<String, Object> args);
 
 	ISqlCmd args(List<Object> args);
 
