@@ -1,4 +1,4 @@
-package tsinswreng.javasqlhelper;
+package tsinswreng.dictmapper;
 
 import java.util.Map;
 

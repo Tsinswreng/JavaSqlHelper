@@ -1,6 +1,8 @@
 package tsinswreng.javasqlhelper;
 
 import lombok.Data;
+import tsinswreng.dictmapper.IDictMapperShallow;
+
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiFunction;
